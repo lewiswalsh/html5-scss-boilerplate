@@ -1,0 +1,34 @@
+{
+	"name"            : "html5-and-scss-boilerplate",
+	"version"         : "1.0.0",
+	"description"     : "HTML5 and CSS boilerplate",
+	"keywords"        : [],
+	"homepage"        : "",
+	"bugs"            : {
+		"url"   : "",
+		"email" : "lewis@lewiswalsh.com"
+	},
+	"author"          : "Lewis Walsh <lewis@lewiswalsh.com>",
+	"license"         : "ISC",
+	"main"            : "app.js",
+	"scripts"         : {
+		"start" : "node --use_strict app.js",
+		"test"  : "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository"      : {
+		"type" : "git",
+		"url"  : ""
+	},
+	"dependencies"    : {
+		"gulp"                     : "^3",
+    "gulp-sass"                : "^2",
+    "gulp-clean-css"           : "^2",
+		"gulp-autoprefixer"        : "^3",
+		"gulp-watch"               : "^4.3.5",
+    "gulp-imagemin"            : "^2.4.0",
+    "imagemin-jpeg-recompress" : "^4.3.0",
+    "imagemin-pngquant"        : "^4.2.2"
+	},
+	"devDependencies" : {
+	}
+}
