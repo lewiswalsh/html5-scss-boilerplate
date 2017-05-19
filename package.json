@@ -22,7 +22,7 @@
 	"dependencies"    : {
 		"gulp"                     : "^3",
     "gulp-sass"                : "^2",
-    "gulp-clean-css"           : "^2",
+    "gulp-clean-css"           : "^3",
 		"gulp-autoprefixer"        : "^3",
 		"gulp-watch"               : "^4.3.5",
     "gulp-imagemin"            : "^2.4.0",
