@@ -5,33 +5,30 @@
   <title>Page title - Site title</title><!-- Site title only necessary on front page. 70 chars, relevant stuff first. -->
   <meta name='description' content=''>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <link rel='icon' type='image/x-icon' href='http://example.com/favicon.ico' />
+  <link rel='icon' type='image/x-icon' href='favicon.ico' />
   <link href='style.css' rel='stylesheet' media='all'>
 </head>
 <body>
 
-  <header role='banner' class='container'>
+  <header role='banner'>
     <h2>Site title</h2>
   </header>
 
-  <nav role='navigation' class='container'><!-- <nav> does not have to appear in <header> and does not need to be unique -->
+  <nav role='navigation'><!-- <nav> does not have to appear in <header> and does not need to be unique -->
   </nav>
 
-  <main role='main' class='container'><!-- only ONE instance of this allowed. Wraps the key site content -->
+  <main role='main'><!-- only ONE instance of this allowed. Wraps the key site content -->
 
-    <article><!-- More than one <article> can appear on a page -->
+    <article>
       <h1>Page title</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </article>
 
   </main>
 
-  <footer role='contentinfo' class='container'><!-- role='contentinfo' is used as metadata relavent to page appears in this -->
-    <!-- A duplicate of the site navigation need NOT be in a <nav> element -->
+  <footer role='contentinfo'><!-- role='contentinfo' is used as metadata relavent to page appears in this -->
     <small>Copyright &copy; <time datetime='2016'>2016</time> {{site_title}}. All rights reserved.</small><!-- note <time> element -->
   </footer>
 
-<!-- <script src='js/jquery-2.1.1.min.js'></script> -->
-<!-- <script async src='js/production.min.js'></script> -->
 </body>
 </html>

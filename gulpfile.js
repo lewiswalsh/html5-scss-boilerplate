@@ -1,14 +1,13 @@
 
   const gulp           = require('gulp');
   const sass           = require('gulp-sass');
-  const autoprefixer   = require('gulp-autoprefixer');
   const cleancss       = require('gulp-clean-css');
   const imagemin       = require('gulp-imagemin');
   const pngquant       = require('imagemin-pngquant');
   const jpegRecompress = require('imagemin-jpeg-recompress');
   const watch          = require('gulp-watch');
 
-  const paths = {
+  const PATHS = {
     src : {
       scss   : './scss/**/*.scss',
       images : {
@@ -22,37 +21,44 @@
     }
   };
 
-  gulp.task('scss', function(){
-    return gulp.src(paths.src.scss)
+  function scss(){
+    return gulp.src(PATHS.src.scss)
       .pipe(sass()) // Compile SASS
-      .pipe(autoprefixer()) // CSS Vendor prefixes
       .pipe(cleancss()) // Minify
-      .pipe(gulp.dest(paths.dest.css));
-  });
+      .pipe(gulp.dest(PATHS.dest.css));
+  }
 
-  gulp.task('jpeg', function(){
-    return gulp.src(paths.src.images.jpg)
-      .pipe(jpegRecompress({loops: 3, quality:'high'})())
-      .pipe(gulp.dest(paths.dest.images));
-  });
-  gulp.task('pnggifsvg', function(){
-    return gulp.src(paths.src.images.gifpngsvg)
+  function jpeg(){
+    return gulp.src(PATHS.src.images.jpg)
+      .pipe(imagemin([
+        jpegRecompress({
+          loops: 4,
+          min: 50,
+          max: 95,
+          quality: 'high'
+        })
+      ]))
+      .pipe(gulp.dest(PATHS.dest.images));
+  }
+
+  function pnggifsvg(){
+    return gulp.src(PATHS.src.images.gifpngsvg)
       .pipe(imagemin({
-  			svgoPlugins : [{ removeViewBox : false }],
-        use         : [pngquant()]
+        svgoPlugins: [{ removeViewBox: false }],
+        use: [pngquant()]
   		}))
-      .pipe(gulp.dest(paths.dest.images));
-  });
+      .pipe(gulp.dest(PATHS.dest.images));
+  }
 
-  gulp.task('watch', function(){
-    watch(paths.src.scss, function(){ gulp.start('scss'); });
-    watch(paths.src.images.jpg, function(){ gulp.start('jpeg'); });
-    watch(paths.src.images.gifpngsvg, function(){ gulp.start('pnggifsvg'); });
-  });
+  function watchFiles(){
+    watch(PATHS.src.scss, gulp.series(scss));
+    watch(PATHS.src.images.jpg, gulp.series(jpeg));
+    watch(PATHS.src.images.gifpngsvg, gulp.series(pnggifsvg));
+  }
 
-  gulp.task('default', [
-    'scss',
-    'jpeg',
-    'pnggifsvg',
-    'watch'
-  ]);
+  exports.default = gulp.series(gulp.parallel(
+    scss,
+    jpeg,
+    pnggifsvg),
+    watchFiles
+  );
