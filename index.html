@@ -30,5 +30,8 @@
     <small>Copyright &copy; <time datetime='2016'>2016</time> {{site_title}}. All rights reserved.</small><!-- note <time> element -->
   </footer>
 
+<script>
+  if (navigator.serviceWorker && !navigator.serviceWorker.controller) { navigator.serviceWorker.register('/serviceworker.js'); }
+</script>
 </body>
 </html>
