@@ -21,3 +21,10 @@ time, mark, audio, video {
 html {
   font-size : 62.5%;
 }
+
+@media (prefers-reduced-motion: reduce) { 
+  * { 
+    animation  : none !important; 
+    transition : none !important; 
+  }
+} 
